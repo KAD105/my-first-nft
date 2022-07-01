@@ -4,7 +4,8 @@ compiler:
   solc:
     remappings:
       - "@OpenZeppelin=OpenZeppelin/openzeppelin-contracts@3.4.0"
-
+networks:
+  default: development
 wallets:
   from_key: ${PRIVATE_KEY}
 
