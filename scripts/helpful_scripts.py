@@ -2,6 +2,7 @@ from brownie import network, accounts, config
 
 
 LOCAL_ENVIRONMENT_DEVELOPMENT = ["ganache", "mainnet-fork-dev", "hardhat"]
+OPENSEA_URL = "https://testnets.opensea.io/assets/{}/{}"
 
 
 def get_account(index=None, id=None):
