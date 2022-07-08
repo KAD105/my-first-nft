@@ -9,24 +9,24 @@ import "@chainlink/contracts/src/v0.6/VRFConsumerBase.sol";
 contract AdvancedShapeNft is ERC721, VRFConsumerBase {
 
     uint256 public tokenCounter;
-    bytes32 public keyHash;
+    bytes32 public keyhash;
     uint256 public fee;
     enum FaceMode {HAPPYFACE, NEUTRALFACE, SURPRISEDFACE}
     mapping (uint256 => FaceMode) public tokenIdToFaceMode;
     mapping (bytes32 => address) public requestIdToSender;
     event requestShapeNFT(bytes32 indexed requestId, address requester);
-    event faceModeAssigned(uint256 newTokenId, FaceMode face_mode);
+    event faceModeAssigned(uint256 indexed tokenId, FaceMode face_mode);
 
-    constructor(address _vrfCoordinator, address _linkToken, bytes32 _keyHash, uint256 _fee) public 
+    constructor(address _vrfCoordinator, address _linkToken, bytes32 _keyhash, uint256 _fee) public 
     VRFConsumerBase(_vrfCoordinator, _linkToken) 
     ERC721("ShapeNft", "SHN"){
         tokenCounter = 0;
-        keyHash = _keyHash;
+        keyhash = _keyhash;
         fee = _fee;
     }
 
-    function createShapeNFT()public returns(bytes32){
-        bytes32 requestId = requestRandomness(keyHash, fee);
+    function createShapeNFT()public returns (bytes32){
+        bytes32 requestId = requestRandomness(keyhash, fee);
         requestIdToSender[requestId] = msg.sender;
         emit requestShapeNFT(requestId, msg.sender);
     }
@@ -35,7 +35,7 @@ contract AdvancedShapeNft is ERC721, VRFConsumerBase {
         FaceMode face_mode = FaceMode(randomNumber % 3);
         uint256 newTokenId = tokenCounter;
         tokenIdToFaceMode[newTokenId] = face_mode;
-        faceModeAssigned(newTokenId, face_mode);
+        emit faceModeAssigned(newTokenId, face_mode);
         address owner = requestIdToSender[requestId];
         _safeMint(owner, newTokenId);
         tokenCounter += 1;
