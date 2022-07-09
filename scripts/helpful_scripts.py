@@ -3,6 +3,11 @@ from web3 import Web3
 
 LOCAL_ENVIRONMENT_DEVELOPMENT = ["ganache", "mainnet-fork-dev", "hardhat"]
 OPENSEA_URL = "https://testnets.opensea.io/assets/{}/{}"
+FACE_MODE_MAPPING = {0: "HAPPYFACE", 1: "NEUTRALFACE", 2: "SURPRISEDFACE"}
+
+
+def get_face_mode(face_mode_number):
+    return FACE_MODE_MAPPING[face_mode_number]
 
 
 def get_account(index=None, id=None):
