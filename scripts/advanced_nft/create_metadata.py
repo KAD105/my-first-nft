@@ -7,8 +7,7 @@ import requests
 import json
 
 face_mode_to_image_uri = {
-    "PUG": "https://ipfs.io/ipfs/QmSsYRx3LpDAb1GZQm7zZ1AuHZjfbPkD6J7s9r41xu1mf8?filename=pug.png",
-    "SHIBA_INU": "https://ipfs.io/ipfs/QmYx6GsYAKnNzZ9A6NvEKV9nf1VaDzJrqDR23Y8YSkebLU?filename=shiba-inu.png",
+    "HAPPYFACE": "https://ipfs.io/ipfs/QmU1RvoyREekbXhB7cWTpoaZEoyidYPWiwxkiVFtfTx5Ue?filename=happyface.png",
     "SURPRISEDFACE": "https://ipfs.io/ipfs/QmcrtB7ygoSkLVJcLFwthpXhCpvUpzABeunDEabnLtVuUb?filename=surprisedface.png",
 }
 
